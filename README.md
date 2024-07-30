@@ -68,4 +68,41 @@ syntax
            from tableA
            INNER JOIN tableB
            ON tableA.col_name=tableB.col_name;
-     
+
+  #QUESTION
+  
+ques 1->Show first name of patients that start with the letter 'C'
+
+        SELECT first_name FROM patients where first_name like "C%"
+
+  ques2->Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)
+
+        SELECT first_name FROM patients where weight between 100 and 120
+
+  ques3->Update the patients table for the allergies column. If the patient's allergies is null then replace it with 'NKA'
+
+        update patients
+        set allergies='NKA'
+        where allergies is Null
+
+
+   ques->Show first name and last name concatinated into one column to show their full name.
+
+          select CONCAT(first_name ,  ' ' ,last_name)  from 
+              patients
+
+ ques5->  Show first name, last name, and the full province name of each patient.
+
+Example: 'Ontario' instead of 'ON'
+
+
+            select first_name,last_name,province_name from patients as p 
+      join province_names as pn on
+     p.province_id = pn.province_id;
+
+
+
+ques 6->Show how many patients have a birth_date with 2010 as the birth year.
+
+        select count(patient_id)from patients where year(birth_date)=2010
+
